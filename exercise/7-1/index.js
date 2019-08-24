@@ -1,0 +1,6 @@
+﻿$(function() {
+    var $content = $("#content");
+    
+    
+    
+});
