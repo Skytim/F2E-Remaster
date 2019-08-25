@@ -1,13 +1,12 @@
-﻿$(function() {
-    $("#menu").on("mouseenter mouseleave click", "a", function(e) {
-        if (e.type != "click") {
-            var temp = $(this).text();
-            $(this).text($(this).data("english"));
-            $(this).data("english", temp);
-        } else {
-            $(".content").load($(this).attr("href"));
-            e.preventDefault();
-        }
-    });
-    $("#menu").load("menu.html");
+﻿document.querySelector("#checkbox").addEventListener("change", function () {
+
+    if (this.checked) {
+        document.querySelector("#register").addEventListener("click", registerEvent);
+    } else {
+        document.querySelector("#register").removeEventListener("click",registerEvent);
+    }
+ 
 });
+function registerEvent() {
+    location.href = "../4-2/index.html";
+};
