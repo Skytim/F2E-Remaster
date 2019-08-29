@@ -1,4 +1,5 @@
 ﻿var menuBar = document.querySelectorAll(".menu>a");
+// 第一次執行
 loadPageToContent(document.querySelector("[href='" + (location.hash.substr(1)+ "']")));
 
 menuBar.forEach(item => {
