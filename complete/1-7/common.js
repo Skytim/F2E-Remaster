@@ -14,9 +14,7 @@ function loadPageToContent(domObject) {
     fetch(href).then(response => {
         return response.text();
     }).then(data => {
-        menuBar.forEach(item => {
-            item.removeAttribute("class");
-        });
+        document.querySelector(".selected").className = "";
         domObject.classList.add("selected");
         document.querySelector(".content").innerHTML = data;
     });

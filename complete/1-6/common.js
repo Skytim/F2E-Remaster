@@ -5,9 +5,7 @@ loadPageToContent(document.querySelector(".menu>a"));
 
 menuBar.forEach(item => {
     item.addEventListener('click', function (event) {
-        menuBar.forEach(item => {
-            item.removeAttribute("class");
-        });
+        document.querySelector(".selected").className = "";
         loadPageToContent(this);
         event.preventDefault();
     }, false);
