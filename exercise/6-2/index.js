@@ -1,10 +1,10 @@
 ﻿$(function() {
     /*
     if (new Date().getHours() >= 12) {
-        $("#show").text("下午");
+        console.log("下午");
     } else {
-        $("#show").text("上午");
+        console.log("上午");
     }
     */
-    
+    console.log(new Date().getHours() >= 12 ? "下午" : "上午");
 });

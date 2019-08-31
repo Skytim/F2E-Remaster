@@ -1,6 +1,5 @@
-﻿$(function () {
+﻿$(function() {
     var json;
-
     function show(data) {
         var html = "";
         for (var i = 0; i < data.length; i++) {
@@ -12,14 +11,11 @@
         }
         $("#content").html(html);
     }
-
-    $.getJSON("data.json", function (data) {
+    $.getJSON("data.json", function(data) {
         json = data;
         show(json);
-
     });
-
-    $(".bordered th").click(function () {
+    $(".bordered th").click(function() {
         var $this = $(this);
         $this.siblings().removeClass();
         if ($this.hasClass("up")) {
@@ -32,11 +28,9 @@
         sort(key, direction);
         show(json);
     });
-    //            "date", "up"
     function sort(key, direction) {
-        json.sort(function (a, b) {
+        json.sort(function(a, b) {
             if (direction == "up") {
-                // "09/01" > "09/05"
                 if (a[key] > b[key]) {
                     return 1;
                 } else {
@@ -49,8 +43,16 @@
                     return -1;
                 }
             }
-
-        })
-
+        });
+    }
+    function customSort(input) {
+        if (typeof input == "string") {
+            input = input.replace("一","1");
+            input = input.replace("二","2");
+            input = input.replace("三","3");
+            input = input.replace("四","4");
+            input = input.replace("五","5");
+        }
+        return input;
     }
 });

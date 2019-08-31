@@ -1,8 +1,8 @@
-﻿$(function () {
-  $.getJSON("data.json", function (data) {
-    $("#username").text(data.username);
-    $("#image").attr("src", data.image);
-    $("#photos").prepend(data.photos);
-    $("#followers").prepend(data.followers);
-  });
+﻿$(function() {
+    $.getJSON("data.json", function(data) {
+        $("#image").attr("src", data.image);
+        $("#username").text(data.username);
+        $("#photos").prepend(data.photos);
+        $("#followers").prepend(data.followers);
+    });
 });

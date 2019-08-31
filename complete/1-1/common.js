@@ -1,11 +1,16 @@
-﻿fetch('header.html').then(response => {
-    return response.text();
-}).then(data => {
-    document.querySelector("#header").innerHTML = data;
+﻿var header = document.querySelector("#header");
+var footer = document.querySelector("#footer");
+var sidebar = document.querySelectorAll(".topic");
+header.addEventListener("click",function(){
+    console.log("我是header的部分");
 });
 
-fetch('footer.html').then(response => {
-    return response.text();
-}).then(data => {
-    document.querySelector("#footer").innerHTML = data;
+footer.addEventListener("click",function(){
+    console.log("我是footer的部分");
+});
+sidebar.forEach(item=>{
+    // console.log(item);
+    item.addEventListener("click",function(){
+        alert("作者是"+item.getAttribute("author"));
+    });
 });

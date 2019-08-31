@@ -1,15 +1,15 @@
 ﻿$(function() {
     function build(data, parent) {
-
-
-
-
-
-
-
-
-
-
+        var html = "";
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].parent == parent) {
+                html += "<li>";
+                html += "<a href=\"" + data[i].url + "\">" + data[i].name + "</a>";
+                html += "<ul>" + build(data, data[i].id) + "</ul>";
+                html += "</li>";
+            }
+        }
+        return html;
     }
     $.getJSON("data.json", function(data) {
         $(".navigation").html(build(data, 0));

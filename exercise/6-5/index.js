@@ -7,5 +7,7 @@
         $("ul").append("<li><a>" + data[i] + "</a></li>");
     }
     */
-    
+    for (var i = 0, max = data.length; i < max; i++) {
+        $("ul").append("<li><a>" + data[i] + "</a></li>");
+    }
 });

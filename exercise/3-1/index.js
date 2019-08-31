@@ -1,5 +1,5 @@
 ﻿$(function () {
-  $.getJSON("message.json", function (data) {
-    $("#message").html(data);
-  })
+    $.getJSON("message.json", function (data) {
+        $("#message").html(data);
+    });
 });

@@ -1,9 +1,10 @@
 ﻿$(function() {
+    var oldder;
     var current = 0;
     function getArticle(num, fetch) {
         $.getJSON("/api/4-7", {
-                fetch: fetch, //一次抓取幾筆
-                num: num //抓取大於此編號
+            fetch: fetch, //一次抓取幾筆
+            num: num //抓取大於此編號
         }, function(data) {
             var html = "";
             for (var i = 0; i < data.length; i++) {
@@ -16,8 +17,11 @@
             $(".box").append(html);
         });
     }
-    $("#more").click(function() {
-        getArticle(current, 3);
+    $(window).scroll(function() {
+        if (oldder != current && $(window).scrollTop() > $(document).height() - $(window).height() - 100) {
+            oldder = current;
+            getArticle(current, 3);
+        }
     });
     getArticle(current, 5);
 });

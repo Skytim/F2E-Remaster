@@ -1,7 +1,7 @@
 ﻿(function($) {
-    
-    
-    
+    $.expr.filters.hasValue = function(a) {
+        return $(a).val() !== "";
+    }
 })(jQuery);
 $(function() {
     $("input").keyup(function() {

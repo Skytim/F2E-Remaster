@@ -1,10 +1,14 @@
 ﻿var menuBar = document.querySelectorAll(".menu>a");
-// 第一次執行
-loadPageToContent(document.querySelector("[href='" + (location.hash.substr(1)+ "']")));
+
+loadPageToContent(document.querySelector(".menu>a"));
+
 
 menuBar.forEach(item => {
     item.addEventListener('click', function (event) {
-        location.hash = this.getAttribute("href");
+        menuBar.forEach(item => {
+            item.removeAttribute("class");
+        });
+        loadPageToContent(this);
         event.preventDefault();
     }, false);
 });
@@ -14,14 +18,8 @@ function loadPageToContent(domObject) {
     fetch(href).then(response => {
         return response.text();
     }).then(data => {
-        menuBar.forEach(item => {
-            item.removeAttribute("class");
-        });
         domObject.classList.add("selected");
         document.querySelector(".content").innerHTML = data;
+        location.hash = href;
     });
 }
-
-window.addEventListener("hashchange",function(){
-    loadPageToContent(document.querySelector("[href='" + (location.hash.substr(1)+ "']")));
-})

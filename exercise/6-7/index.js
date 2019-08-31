@@ -1,9 +1,11 @@
 ﻿$(function() {
     var data = ["John", "Tom", "Mark", "Allen", "Peter", "David"];
     var $ul=$("ul");
-    $ul.append("<li class=\"nav-header\">員工名單</li>");
-    $ul.append("<hr>");
+    var html = "";
+    html += "<li class=\"nav-header\">員工名單</li>";
+    html += "<hr>";
     for (var i = 0, max = data.length; i < max; i++) {
-        $ul.append("<li><a>" + data[i] + "</a></li>");
+        html += "<li><a>" + data[i] + "</a></li>";
     }
+    $ul.append(html);
 });

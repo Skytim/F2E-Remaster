@@ -9,4 +9,13 @@
             }
         });
     });
+    $("#register").click(function() {
+        $.getJSON("/api/4-2", { username: $("#name").val(), isregister: true }, function (data) {
+            if (data) {
+                alert("註冊成功!");
+            } else {
+                alert("註冊失敗!");
+            }
+        });
+    });
 });

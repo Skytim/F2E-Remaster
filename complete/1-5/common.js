@@ -1,25 +1,18 @@
-﻿var menuBar = document.querySelectorAll(".menu>a");
-
-loadPageToContent(document.querySelector(".menu>a"));
-
-
-menuBar.forEach(item => {
+﻿// 第一次 loading Page
+loadPageToContent(document.querySelector(".menu>a").getAttribute("href"));
+// 對menu 的每一個選項做事件綁定
+document.querySelectorAll(".menu>a").forEach(item => {
     item.addEventListener('click', function (event) {
-        menuBar.forEach(item => {
-            item.removeAttribute("class");
-        });
-        loadPageToContent(this);
         event.preventDefault();
+        loadPageToContent(this.href);
     }, false);
 });
 
-function loadPageToContent(domObject) {
-    var href = domObject.getAttribute("href");
+// 將指定的 href頁面 load頁面
+function loadPageToContent(href) {
     fetch(href).then(response => {
         return response.text();
     }).then(data => {
-        domObject.classList.add("selected");
         document.querySelector(".content").innerHTML = data;
-        location.hash = href;
     });
 }

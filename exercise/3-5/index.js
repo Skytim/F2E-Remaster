@@ -1,5 +1,5 @@
-﻿$(function () {
-    $.getJSON("data.json", function (data) {
+﻿$(function() {
+    $.getJSON("data.json", function(data) {
         var html = "";
         var navi = "";
         for (var i = 0; i < data.length; i++) {
@@ -18,7 +18,7 @@
         var index = 0;
         function run() {
             if (!$(".inbox").is(":animated")) {
-                $(".inbox").animate({ left: "-=800" }, function () {
+                $(".inbox").animate({left: "-=800"}, function() {
                     if (index >= data.length - 1) {
                         index = -1;
                         $(this).css("left", 0);
@@ -29,37 +29,32 @@
             }
         }
         var sid = setInterval(run, 2000);
-        $(".inbox,.navi,.prev,.next").hover(function () {
+        $(".inbox,.navi,.prev,.next").hover(function() {
             clearInterval(sid);
-        }, function () {
+        },function() {
             sid = setInterval(run, 2000);
         });
-
         function dot() {
             $(".navi>span.active").removeClass();
             $(".navi>span").eq(index).addClass("active");
         }
-
-
         function back() {
             if (!$(".inbox").is(":animated")) {
                 if (index <= 0) {
                     index = data.length;
                     $(".inbox").css("left", index * -800);
                 }
-                $(".inbox").animate({ left: "+=800" }, function () {
+                $(".inbox").animate({left: "+=800"}, function() {
                     index--;
                     dot();
                 });
             }
         }
-
         $(".next").click(run);
         $(".prev").click(back);
-        $(".navi>span").click(function () {
+        $(".navi>span").click(function() {
             index = $(this).index();
-            $(".inbox").animate({ left: index * -800 }, dot);
+            $(".inbox").animate({left: index * -800}, dot);
         });
-
     });
 });
