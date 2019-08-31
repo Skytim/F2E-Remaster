@@ -1,6 +1,6 @@
 ﻿var header = document.querySelector("#header");
 var footer = document.querySelector("#footer");
-var sidebar = document.querySelectorAll(".topic");
+var sidebar = document.querySelectorAll("#sidebar .topic");
 header.addEventListener("click",function(){
     console.log("我是header的部分");
 });
