@@ -1,6 +1,6 @@
 ﻿var menuBar = document.querySelectorAll(".menu>a");
 
-loadPageToContent(document.querySelector(".menu>a"));
+loadPageToContent(document.querySelector("a[href='" + (location.hash.substr(1) || "Page0.html") + "']"));
 
 
 menuBar.forEach(item => {
