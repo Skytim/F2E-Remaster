@@ -1,9 +1,10 @@
 ﻿document.querySelector("#checkbox").addEventListener("change", function () {
-
+    var  register =  document.querySelector("#register");
     if (this.checked) {
-        document.querySelector("#register").addEventListener("click", registerEvent);
+        register.addEventListener("click", registerEvent);
     } else {
-        document.querySelector("#register").removeEventListener("click",registerEvent);
+        var new_element =  register.cloneNode(true);
+        register.parentNode.replaceChild(new_element, register);
     }
  
 });
