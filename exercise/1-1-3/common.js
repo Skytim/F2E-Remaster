@@ -10,7 +10,6 @@ header.onclick = function () {
 footer.onclick = function () {
     console.log("我是footer的部分");
 };
-
 console.log("總共選到幾個DOM元件:" + sidebar.length);
 
 for (var i = 0; i < sidebar.length; i++) {
