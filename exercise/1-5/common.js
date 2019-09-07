@@ -1,20 +1,7 @@
-﻿// 1.第一次進到該頁面時，將menu的第一個連結對應的頁面載入
-// 2.針對menu每一個連結做事件綁定，每次點選的時候便將指定的 href頁面 load頁面
+﻿var header = document.querySelector("#header");
+var footer = document.querySelector("#footer");
 
 
-
-// 對 menu 的每一個選項做事件綁定
-document.querySelectorAll(".menu>a").forEach(item => {
-
-});
-
-
-
-// 將指定的 href頁面 load頁面
-function loadPageToContent(href) {
-    fetch(href).then(response => {
-        return response.text();
-    }).then(data => {
-        document.querySelector(".content").innerHTML = data;
-    });
-}
+// 請完成
+// 1. 將header部分載入的事件(透過fetch)
+// 2. 將footer部分載入的事件(透過fetch)

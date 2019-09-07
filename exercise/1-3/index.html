@@ -1,17 +1,27 @@
 ﻿<!DOCTYPE HTML>
 <html>
+
 <head>
-    <title>範例1-3</title>
+    <title>範例1-1</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="StyleSheet" type="text/css">
 </head>
+
 <body>
     <div id="page">
-        <div id="header"></div>
-        <div id="mainarea">
+        <div id="header">
+            <div id="headerleft">
+                <h1>請點擊我</h1>
+                <div class="description">
+                    記載著在網路世界的學習心得與技術分享
+                </div>
+            </div>
+        </div>
+        <div id="mainarea" class="topic" author="TimTsai">
             <div id="contentarea">
                 <h2>前端工程興起後的程式設計分工</h2>
-                最近在軟體開發的社群裡，愈來愈常聽到「前端工程（Front End Engineering，F2E）」或「前端工程師」這類的名詞，相較於過去，這完全是新的名詞。在這一回中，就讓我們來介紹和這個名詞相關的種種概念和想法吧。
+                最近在軟體開發的社群裡，愈來愈常聽到「前端工程（Front End
+                Engineering，F2E）」或「前端工程師」這類的名詞，相較於過去，這完全是新的名詞。在這一回中，就讓我們來介紹和這個名詞相關的種種概念和想法吧。
                 <br />
                 <br />
                 在最初的Web應用程式開發模式裡，甚至早在Web應用程式之前，不論是有使用者介面（UI），或是沒有使用者介面的（Console/Terminal）的應用程式，通常都是由程式設計工程師，來負責程式的開發。
@@ -39,28 +49,25 @@
             </div>
             <div id="sidebar">
                 <h2>最新回應</h2>
-                身為一個小前端,就等廖大開課啦!<br />
-                5月26日 - 方勉之
-                <br />
-                <br />
-                你好 請問接下來的開課時間有確定嗎??是幾月呢??<br />
-                5月12日 - Nicole Liu
-                <br />
-                <br />
-                抱歉，目前人數已滿， 且之後有行程規劃，所以暫時不開課了^_^<br />
-                5月6日 - 洧杰
-                <br />
-                <br />
-                現在這課程還有嗎？<br />
-                4月28日 - Kate
-                <br />
-                <br />
-                找sass馬上就找到今天的講者<br />
-                4月20日 - 盧均林
+                <p class="topic" author="方勉之">身為一個小前端,就等廖大開課啦!
+                    <br />
+                    <b>5月26日 - 方勉之</b></p>
+                <p class="topic" author="Nicole Liu">你好 請問接下來的開課時間有確定嗎??是幾月呢??<br />
+                    <b>5月12日 - Nicole Liu</b></p>
+                <p class="topic" author="洧杰">抱歉，目前人數已滿， 且之後有行程規劃，所以暫時不開課了^_^ <br />
+                    <b> 5月6日 - 洧杰</b>
+                    <br />
+                </p>
+                <p class="topic" author="Kate">現在這課程還有嗎？<br />
+                    <b>4月28日 - Kate</b></p>
+
+                <p class="topic" author="盧均林">找sass馬上就找到今天的講者<br />
+                    <b> 4月20日 - 盧均林</b></p>
             </div>
         </div>
-        <div id="footer"></div>
+        <div id="footer">請點擊我</div>
     </div>
 </body>
 <script src="common.js"></script>
+
 </html>

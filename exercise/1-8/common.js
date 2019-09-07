@@ -1,30 +1,24 @@
-﻿var menuBar = document.querySelectorAll(".menu>a");
-// 第一次執行
-loadPageToContent(document.querySelector("a[href='" + (location.hash.substr(1) || "Page0.html") + "']"));
+﻿// 1.第一次進到該頁面時，將menu的第一個連結對應的頁面載入，並將連結後面加入hash
+
+var menuBar = document.querySelectorAll(".menu>a");
 
 menuBar.forEach(item => {
     item.addEventListener('click', function (event) {
-        location.hash = this.getAttribute("href");
+        document.querySelector(".selected").className = "";
+        loadPageToContent(this);
         event.preventDefault();
     }, false);
 });
 
+
+
+// 2.針對menu每一個連結做事件綁定，每次點選的時候便將指定的 href頁面 load頁面，並將連結後面加入hash
+
 function loadPageToContent(domObject) {
     var href = domObject.getAttribute("href");
     fetch(href).then(response => {
-        // 1.當 url 取的到頁面時，便回傳該頁面的資料
-        // 2.否則拋出錯誤訊息
-
+        return response.text();
     }).then(data => {
-        menuBar.forEach(item => {
-            item.removeAttribute("class");
-        });
-        domObject.classList.add("selected");
-        document.querySelector(".content").innerHTML = data;
-    });
-        // 3. 針對錯誤訊息做處理
-}
 
-window.addEventListener("hashchange", function () {
-    loadPageToContent(document.querySelector("[href='" + (location.hash.substr(1) + "']")));
-})
+    });
+}

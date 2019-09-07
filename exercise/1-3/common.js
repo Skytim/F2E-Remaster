@@ -1,9 +1,11 @@
-﻿fetch('common.html').then(response => {
-    // 將拿到的資料作處理，只回傳text的部分
-    return response.text();
-}).then(data => {
+﻿var header = document.querySelector("#header");
 
-    // 1.請將data轉換成 dom element
-    // 2.將轉換好的 dom element 只選取header的部分並且塞進header
-    // 3.將轉換好的 dom element 只選取footer的部分並且塞進footer
-});
+
+
+header.onclick = function () {
+    console.log("我是header的部分");
+}
+
+// 1. 點選footer時，觸發alert事件
+// 2. 點選sidbar 的每一個 topic， 顯示其 author 內容 
+// 3. 只限定 sidebar 內點選才觸發事件

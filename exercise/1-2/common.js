@@ -1,7 +1,4 @@
-﻿var header = document.querySelector("#header");
-var footer = document.querySelector("#footer");
-
-
-// 請完成
-// 1. 將header部分載入的事件(透過fetch)
-// 2. 將footer部分載入的事件(透過fetch)
+﻿// 請完成
+// 1. 透過 document.getElementsByClassName 取得目前的 topic 
+// 2. 點選 每一個  回應內容， 顯示其 author  
+// 3. 畫面上若有其他的 topic class，可以只限定 sidebar 內點選才觸發事件嗎?
