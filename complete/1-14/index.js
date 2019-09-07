@@ -1,5 +1,6 @@
-﻿document.querySelector("#checkbox").addEventListener("change", function () {
-    var  register =  document.querySelector("#register");
+﻿var  register =  document.querySelector("#register");
+document.querySelector("#checkbox").addEventListener("change", function () {
+
     if (this.checked) {
         register.addEventListener("click", registerEvent);
     } else {
