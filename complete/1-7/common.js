@@ -3,11 +3,10 @@
 loadPageToContent(document.querySelector("a[href='" + (location.hash.substr(1) || "Page0.html") + "']"));
 
 menuBar.forEach(item => {
-    item.addEventListener('click', function (event) {
-        document.querySelector(".selected").className = "";
+    item.onclick = function (event) {
         location.hash = this.getAttribute("href");
         event.preventDefault();
-    }, false);
+    }
 });
 
 function loadPageToContent(domObject) {
@@ -21,6 +20,7 @@ function loadPageToContent(domObject) {
     });
 }
 
-window.addEventListener("hashchange",function(){
-    loadPageToContent(document.querySelector("[href='" + (location.hash.substr(1)+ "']")));
+window.addEventListener("hashchange", function () {
+    document.querySelector(".selected").className = "";
+    loadPageToContent(document.querySelector("[href='" + (location.hash.substr(1) + "']")));
 })
