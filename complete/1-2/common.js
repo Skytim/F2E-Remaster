@@ -1,15 +1,9 @@
-﻿var header = document.querySelector("#header");
-var footer = document.querySelector("#footer");
+﻿var topic = document.getElementsByClassName("topic");
 
-
-fetch('header.html').then(response => {
-    return response.text();
-}).then(data => {
-   header.innerHTML = data;
-});
-
-fetch('footer.html').then(response => {
-    return response.text();
-}).then(data => {
-   footer.innerHTML = data;
-});
+alert("總共選到幾個元件" + topic.length);
+for (var i = 0; i < topic.length; i++) {
+    topic[i].onclick = function () {
+        // alert("作者是" + this.getAttribute("author"));
+        console.log("作者是" + this.getAttribute("author"));
+    }
+}

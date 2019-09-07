@@ -14,13 +14,14 @@
             this.innerText = this.dataset.english;
             this.dataset.english = temp;
         }
-        item.addEventListener("click", function (event) {
+
+        item.onclick = function (event) {
             event.preventDefault();
             fetch(this.href).then(response => {
                 return response.text();
             }).then(data=>{
                 document.querySelector("#content").innerHTML = data;
             });
-        })
+        }
     })
 });

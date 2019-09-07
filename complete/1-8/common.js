@@ -1,42 +1,27 @@
-﻿var menuBar = document.querySelectorAll(".menu>a");
-// 第一次執行
-loadPageToContent(document.querySelector("a[href='" + (location.hash.substr(1) || "Page0.html") + "']"));
+﻿// 第一次進網頁的時候，取 menu 第一個 連結載入至頁面
+var firstButton = document.querySelector(".menu>a");
+firstButton.className = "selected";
+loadPageToContent(firstButton.getAttribute("href"));
 
-menuBar.forEach(item => {
+// 對menu 的每一個選項做事件綁定
+document.querySelectorAll(".menu>a").forEach(item => {
 
     item.onclick = function (event) {
-
-        location.hash = this.getAttribute("href");
         event.preventDefault();
+        // 清空被選擇的物件
+        document.querySelector(".selected").className = "";
+        this.className = "selected";
+        loadPageToContent(this.href);
+
     }
 });
 
-function loadPageToContent(domObject) {
-    var href = domObject.getAttribute("href");
-    fetch(href).then(response => {
-        // 當回應正確的時候
-        if (response.ok) {
-            return response.text();
-        }
-        // 當回應錯誤的時候
-        else {
-            // 拋出錯誤訊息
-            throw new Error('找不到該網頁');
-        }
-    }).then(data => {
-        menuBar.forEach(item => {
-            item.removeAttribute("class");
-        });
-        domObject.classList.add("selected");
-        document.querySelector(".content").innerHTML = data;
-    }).catch(
-        // 處理錯誤訊息
-        function (error) {
-            document.querySelector(".content").innerHTML = error.message;
-        }
-    );
-}
 
-window.addEventListener("hashchange", function () {
-    loadPageToContent(document.querySelector("[href='" + (location.hash.substr(1) + "']")));
-})
+// 將指定的 href頁面 load頁面
+function loadPageToContent(href) {
+    fetch(href).then(response => {
+        return response.text();
+    }).then(data => {
+        document.querySelector(".content").innerHTML = data;
+    });
+}

@@ -1,17 +1,20 @@
-﻿fetch('common.html').then(response => {
-    // 將拿到的資料作處理，只回傳text的部分
-    return response.text();
-}).then(data => {
+﻿var header = document.querySelector("#header");
+var footer = document.querySelector("#footer");
+var sidebar = document.querySelectorAll("#sidebar .topic");
 
-    // 將 string 轉成DOM物件
-    const doc = new DOMParser().parseFromString(data, "text/xml");
 
-    // 在該DOM的物件中只取 header的部分
-    let headrContent = doc.querySelector("#header").innerHTML;
+header.onclick = function () {
+    console.log("我是header的部分");
+}
 
-    // 在該DOM的物件中只取 footer的部分
-    let footContent = doc.querySelector("#footer").innerHTML
+footer.onclick = function () {
+    console.log("我是footer的部分");
+};
 
-    document.querySelector("#header").innerHTML = headrContent;
-    document.querySelector("#footer").innerHTML = footContent;
-});
+console.log("總共選到幾個DOM元件:" + sidebar.length);
+
+for (var i = 0; i < sidebar.length; i++) {
+    sidebar[i].onclick = function () {
+        console.log("作者是"+this.getAttribute("author"));
+    }
+}

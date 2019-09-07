@@ -1,23 +1,17 @@
-﻿var menuBar = document.querySelectorAll(".menu>a");
+﻿fetch('common.html').then(response => {
+    // 將拿到的資料作處理，只回傳text的部分
+    return response.text();
+}).then(data => {
 
-loadPageToContent(document.querySelector("a[href='" + (location.hash.substr(1) || "Page0.html") + "']"));
+    // 將 string 轉成DOM物件
+    const doc = new DOMParser().parseFromString(data, "text/xml");
 
+    // 在該DOM的物件中只取 header的部分
+    let headrContent = doc.querySelector("#header").innerHTML;
 
-menuBar.forEach(item => {
-    item.onclick=function(){
-        document.querySelector(".selected").className = "";
-        loadPageToContent(this);
-        event.preventDefault();
-    }
+    // 在該DOM的物件中只取 footer的部分
+    let footContent = doc.querySelector("#footer").innerHTML
+
+    document.querySelector("#header").innerHTML = headrContent;
+    document.querySelector("#footer").innerHTML = footContent;
 });
-
-function loadPageToContent(domObject) {
-    var href = domObject.getAttribute("href");
-    fetch(href).then(response => {
-        return response.text();
-    }).then(data => {
-        domObject.classList.add("selected");
-        document.querySelector(".content").innerHTML = data;
-        location.hash = href;
-    });
-}
