@@ -4,11 +4,11 @@ loadPageToContent(document.querySelector("a[href='" + (location.hash.substr(1) |
 
 
 menuBar.forEach(item => {
-    item.addEventListener('click', function (event) {
+    item.onclick=function(){
         document.querySelector(".selected").className = "";
         loadPageToContent(this);
         event.preventDefault();
-    }, false);
+    }
 });
 
 function loadPageToContent(domObject) {

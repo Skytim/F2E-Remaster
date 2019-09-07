@@ -3,16 +3,17 @@
 }).then(data => {
     document.querySelector("#menu").innerHTML = data;
     document.querySelectorAll("a").forEach(item => {
-        item.addEventListener("mouseleave", function () {
+        item.onmouseleave = function () {
             var temp = this.text;
             this.innerText = this.dataset.english;
             this.dataset.english = temp;
-        });
-        item.addEventListener("mouseenter", function () {
+        }
+
+        item.onmouseenter = function () {
             var temp = this.text;
             this.innerText = this.dataset.english;
             this.dataset.english = temp;
-        });
+        }
         item.addEventListener("click", function (event) {
             event.preventDefault();
             fetch(this.href).then(response => {
