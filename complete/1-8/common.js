@@ -1,27 +1,23 @@
-﻿// 第一次進網頁的時候，取 menu 第一個 連結載入至頁面
-var firstButton = document.querySelector(".menu>a");
-firstButton.className = "selected";
-loadPageToContent(firstButton.getAttribute("href"));
+﻿var menuBar = document.querySelectorAll(".menu>a");
 
-// 對menu 的每一個選項做事件綁定
-document.querySelectorAll(".menu>a").forEach(item => {
+loadPageToContent(document.querySelector("a[href='" + (location.hash.substr(1) || "Page0.html") + "']"));
 
-    item.onclick = function (event) {
-        event.preventDefault();
-        // 清空被選擇的物件
+
+menuBar.forEach(item => {
+    item.onclick=function(){
         document.querySelector(".selected").className = "";
-        this.className = "selected";
-        loadPageToContent(this.href);
-
+        loadPageToContent(this);
+        event.preventDefault();
     }
 });
 
-
-// 將指定的 href頁面 load頁面
-function loadPageToContent(href) {
+function loadPageToContent(domObject) {
+    var href = domObject.getAttribute("href");
     fetch(href).then(response => {
         return response.text();
     }).then(data => {
+        domObject.classList.add("selected");
         document.querySelector(".content").innerHTML = data;
+        location.hash = href;
     });
 }
