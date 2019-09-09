@@ -2,7 +2,6 @@
 var footer = document.querySelector("#footer");
 var sidebar = document.querySelectorAll("#sidebar .topic");
 
-
 header.onclick = function () {
     console.log("我是header的部分");
 }

@@ -1,13 +1,13 @@
-﻿var header = document.querySelector("#header");
-var footer = document.querySelector("#footer");
+﻿document.querySelector("#header").onclick = clickHeader;
+document.querySelector("#footer").onclick = clickFooter;
 var sidebar = document.querySelectorAll("#sidebar .topic");
 
 
-header.onclick = function () {
+function clickHeader() {
     console.log("我是header的部分");
 }
 
-footer.onclick = function () {
+function clickFooter() {
     console.log("我是footer的部分");
 };
 
@@ -19,3 +19,4 @@ for (var i = 0; i < sidebar.length; i++) {
     }
 }
 // 請將上述的 onclick 方法改成  addEventListener 方法
+// 將上述的 函數 改成 匿名函數
