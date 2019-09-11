@@ -1,24 +1,28 @@
-﻿// 1.第一次進到該頁面時，將menu的第一個連結對應的頁面載入，並將連結後面加入hash
+﻿// 第一次進網頁的時候，取 menu 第一個 連結載入至頁面
+var firstButton = document.querySelector("a");
+loadPageToContent(location.hash.substr(1) || firstButton.href);
 
-var menuBar = document.querySelectorAll(".menu>a");
+var menu = document.querySelectorAll("a");
 
-menuBar.forEach(item => {
-    item.addEventListener('click', function (event) {
-        document.querySelector(".selected").className = "";
-        loadPageToContent(this);
+for (var i = 0; i < menu.length; i++) {
+
+    menu[i].onclick = function (event) {
         event.preventDefault();
-    }, false);
-});
+        // 清空被選擇的物件
+        document.querySelector(".selected").className = "";
+        this.className = "selected";
+        loadPageToContent(this.href);
+    }
+}
 
-
-
-// 2.針對menu每一個連結做事件綁定，每次點選的時候便將指定的 href頁面 load頁面，並將連結後面加入hash
-
-function loadPageToContent(domObject) {
-    var href = domObject.getAttribute("href");
+// 將指定的 href頁面 load頁面
+function loadPageToContent(href) {
     fetch(href).then(response => {
         return response.text();
     }).then(data => {
-
+        document.querySelector(".content").innerHTML = data;
+        document.querySelector("a[href='" + href + "']").className = "selected";
+        var hash = href.substr(href.lastIndexOf("/") + 1);
+        location.hash = hash;
     });
 }

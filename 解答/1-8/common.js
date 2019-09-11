@@ -1,23 +1,28 @@
-﻿var menuBar = document.querySelectorAll(".menu>a");
+﻿// 第一次進網頁的時候，取 menu 第一個 連結載入至頁面
+var firstButton = document.querySelector("a");
+loadPageToContent(location.hash.substr(1) || firstButton.href);
 
-loadPageToContent(document.querySelector("a[href='" + (location.hash.substr(1) || "Page0.html") + "']"));
+var menu = document.querySelectorAll("a");
 
+for (var i = 0; i < menu.length; i++) {
 
-menuBar.forEach(item => {
-    item.onclick=function(){
-        document.querySelector(".selected").className = "";
-        loadPageToContent(this);
+    menu[i].onclick = function (event) {
         event.preventDefault();
+        // 清空被選擇的物件
+        document.querySelector(".selected").className = "";
+        this.className = "selected";
+        loadPageToContent(this.href);
     }
-});
+}
 
-function loadPageToContent(domObject) {
-    var href = domObject.getAttribute("href");
+// 將指定的 href頁面 load頁面
+function loadPageToContent(href) {
     fetch(href).then(response => {
         return response.text();
     }).then(data => {
-        domObject.classList.add("selected");
         document.querySelector(".content").innerHTML = data;
-        location.hash = href;
+        document.querySelector("a[href='" + href + "']").className = "selected";
+        var hash = href.substr(href.lastIndexOf("/") + 1);
+        location.hash = hash;
     });
 }
