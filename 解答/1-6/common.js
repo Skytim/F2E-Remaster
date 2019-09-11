@@ -5,8 +5,8 @@ fetch('Menu.html').then(response => {
 }).then(data => {
     menu.innerHTML = data;
     // 取得 Url
-    let url = location.href;
-    let href =url.substr(url.lastIndexOf("/") + 1);
+    var url = location.href;
+    var href =url.substr(url.lastIndexOf("/") + 1);
     // 選取 Url
-    document.querySelector("a[href='" + (href || "index.html") + "']").className = "selected";
+    document.querySelector("a[href='"+href + "']").className = "selected";
 });
